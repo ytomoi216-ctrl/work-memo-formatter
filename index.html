@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>業務メモ整形ツール</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>AI相談用プロンプトメーカー</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <div class="container">
-    <h1>業務メモ整形ツール</h1>
+    <h1>AI相談用プロンプトメーカー</h1>
 
-    <p>雑なメモを、仕事で使いやすい文章に整えるツールです。</p>
+    <p>雑な業務メモを、ChatGPTなどに相談しやすいプロンプトに変換するツールです。</p>
 
     <textarea id="inputMemo" placeholder="ここに業務メモを入力してください"></textarea>
 
     <div class="control-area">
-      <label for="formatType">変換タイプ</label>
+      <label for="formatType">作りたいプロンプト</label>
 
       <select id="formatType">
-        <option value="share">社内共有</option>
-        <option value="consult">上長相談</option>
-        <option value="todo">TODO化</option>
+        <option value="share">社内共有文を作りたい</option>
+        <option value="consult">上長相談文を作りたい</option>
+        <option value="reply">チャット返信文を作りたい</option>
       </select>
     </div>
 
-<div class="button-area">
-  <button id="formatButton">整形する</button>
-  <button id="clearButton" type="button" class="secondary-button">クリア</button>
-</div>
+    <div class="button-area">
+      <button id="formatButton">プロンプトを作成する</button>
+      <button id="clearButton" type="button" class="secondary-button">クリア</button>
+    </div>
 
-<h2 class="output-title">出力結果</h2>
+    <h2 class="output-title">AIに貼るプロンプト</h2>
 
-<textarea id="outputMemo" placeholder="ここに整形後の文章が表示されます" readonly></textarea>
+    <textarea id="outputMemo" placeholder="ここにAI相談用プロンプトが表示されます" readonly></textarea>
 
-<button id="copyButton" type="button">コピーする</button>
+    <button id="copyButton" type="button">コピーする</button>
   </div>
 
   <script src="script.js"></script>
 </body>
+</html>
