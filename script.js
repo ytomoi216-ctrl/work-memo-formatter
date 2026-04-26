@@ -2,12 +2,39 @@ const inputMemo = document.getElementById("inputMemo");
 const outputMemo = document.getElementById("outputMemo");
 const formatButton = document.getElementById("formatButton");
 const formatType = document.getElementById("formatType");
+const toneType = document.getElementById("toneType");
 const copyButton = document.getElementById("copyButton");
 const clearButton = document.getElementById("clearButton");
+
+function getToneInstruction(tone) {
+  if (tone === "polite") {
+    return "丁寧で、相手に失礼のない自然な文章にしてください。";
+  }
+
+  if (tone === "simple") {
+    return "簡潔で、要点がすぐ分かる文章にしてください。不要な前置きは控えてください。";
+  }
+
+  if (tone === "soft") {
+    return "やわらかめで、相手に配慮が伝わる文章にしてください。きつい表現は避けてください。";
+  }
+
+  if (tone === "formal") {
+    return "フォーマルで、ビジネス文書として違和感のない文章にしてください。";
+  }
+
+  if (tone === "gentle-refusal") {
+    return "相手に配慮しつつ、対応が難しい点はやんわり伝える文章にしてください。強く拒絶する表現は避けてください。";
+  }
+
+  return "丁寧で分かりやすい文章にしてください。";
+}
 
 formatButton.addEventListener("click", function () {
   const memo = inputMemo.value.trim();
   const selectedType = formatType.value;
+  const selectedTone = toneType.value;
+  const toneInstruction = getToneInstruction(selectedTone);
 
   if (memo === "") {
     outputMemo.value = "業務メモを入力してください。";
@@ -24,8 +51,7 @@ formatButton.addEventListener("click", function () {
 関係者に状況を分かりやすく共有すること。
 
 【トーン】
-丁寧で簡潔にしてください。
-必要以上に感情的な表現は避け、事実ベースで整理してください。
+${toneInstruction}
 
 【含めてほしい内容】
 ・発生している事象
@@ -52,7 +78,7 @@ ${memo}`;
 対応方針や判断が必要な点について、上長に確認すること。
 
 【トーン】
-丁寧で、簡潔かつ相談しやすい文章にしてください。
+${toneInstruction}
 責任追及のような表現は避け、判断材料が伝わる内容にしてください。
 
 【含めてほしい内容】
@@ -81,8 +107,8 @@ ${memo}`;
 相手に状況を説明し、必要な案内を行うこと。
 
 【トーン】
-丁寧で、相手に寄り添いつつ、事務的に整理してください。
-強く言い切りすぎず、角が立たない表現にしてください。
+${toneInstruction}
+角が立たない表現にしてください。
 
 【含めてほしい内容】
 ・相手へのお詫びまたは配慮
@@ -119,4 +145,5 @@ clearButton.addEventListener("click", function () {
   inputMemo.value = "";
   outputMemo.value = "";
   formatType.value = "share";
+  toneType.value = "polite";
 });
