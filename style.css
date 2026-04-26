@@ -75,3 +75,17 @@ select {
   background-color: #ffffff;
   box-sizing: border-box;
 }
+
+.button-area {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.secondary-button {
+  background-color: #6b7280;
+}
+
+.secondary-button:hover {
+  background-color: #4b5563;
+}

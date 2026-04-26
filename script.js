@@ -3,6 +3,7 @@ const outputMemo = document.getElementById("outputMemo");
 const formatButton = document.getElementById("formatButton");
 const formatType = document.getElementById("formatType");
 const copyButton = document.getElementById("copyButton");
+const clearButton = document.getElementById("clearButton");
 
 formatButton.addEventListener("click", function () {
   const memo = inputMemo.value.trim();
@@ -65,4 +66,10 @@ copyButton.addEventListener("click", function () {
   navigator.clipboard.writeText(outputText);
 
   alert("コピーしました。");
+});
+
+clearButton.addEventListener("click", function () {
+  inputMemo.value = "";
+  outputMemo.value = "";
+  formatType.value = "share";
 });
