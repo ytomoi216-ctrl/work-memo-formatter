@@ -14,6 +14,16 @@
 
     <textarea id="inputMemo" placeholder="ここに業務メモを入力してください"></textarea>
 
+    <div class="control-area">
+      <label for="formatType">変換タイプ</label>
+
+      <select id="formatType">
+        <option value="share">社内共有</option>
+        <option value="consult">上長相談</option>
+        <option value="todo">TODO化</option>
+      </select>
+    </div>
+
     <button id="formatButton">整形する</button>
 
     <h2 class="output-title">出力結果</h2>
