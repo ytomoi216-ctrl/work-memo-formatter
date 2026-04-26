@@ -47,6 +47,30 @@
   </select>
 </div>
 
+<div class="option-area">
+  <h3>AIへの追加指示</h3>
+
+  <label class="checkbox-label">
+    <input type="checkbox" id="noGuess" checked>
+    不明点を勝手に補完しない
+  </label>
+
+  <label class="checkbox-label">
+    <input type="checkbox" id="separateFacts" checked>
+    事実と推測を分ける
+  </label>
+
+  <label class="checkbox-label">
+    <input type="checkbox" id="askMissing" checked>
+    情報が不足している場合は質問する
+  </label>
+
+  <label class="checkbox-label">
+    <input type="checkbox" id="readyToUse" checked>
+    そのまま使える文章にする
+  </label>
+</div>
+
     <div class="button-area">
       <button id="formatButton">プロンプトを作成する</button>
       <button id="clearButton" type="button" class="secondary-button">クリア</button>

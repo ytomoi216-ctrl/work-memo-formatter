@@ -4,6 +4,12 @@ const formatButton = document.getElementById("formatButton");
 const formatType = document.getElementById("formatType");
 const toneType = document.getElementById("toneType");
 const outputType = document.getElementById("outputType");
+
+const noGuess = document.getElementById("noGuess");
+const separateFacts = document.getElementById("separateFacts");
+const askMissing = document.getElementById("askMissing");
+const readyToUse = document.getElementById("readyToUse");
+
 const copyButton = document.getElementById("copyButton");
 const clearButton = document.getElementById("clearButton");
 
@@ -55,6 +61,34 @@ function getOutputInstruction(output) {
   return "自然な文章として出力してください。";
 }
 
+function getAdditionalInstructions() {
+  const instructions = [];
+
+  if (noGuess.checked) {
+    instructions.push("不明点は勝手に補完せず、分からない点は分からないと扱ってください。");
+  }
+
+  if (separateFacts.checked) {
+    instructions.push("事実として確認できている内容と、推測・判断が必要な内容を分けてください。");
+  }
+
+  if (askMissing.checked) {
+    instructions.push("情報が不足している場合は、文章作成前に確認すべき質問も提示してください。");
+  }
+
+  if (readyToUse.checked) {
+    instructions.push("出力は、必要に応じてそのまま業務で使える文章に整えてください。");
+  }
+
+  if (instructions.length === 0) {
+    return "特になし。";
+  }
+
+  return instructions.map(function (instruction) {
+    return `・${instruction}`;
+  }).join("\n");
+}
+
 formatButton.addEventListener("click", function () {
   const memo = inputMemo.value.trim();
   const selectedType = formatType.value;
@@ -63,6 +97,7 @@ formatButton.addEventListener("click", function () {
 
   const toneInstruction = getToneInstruction(selectedTone);
   const outputInstruction = getOutputInstruction(selectedOutput);
+  const additionalInstructions = getAdditionalInstructions();
 
   if (memo === "") {
     outputMemo.value = "業務メモを入力してください。";
@@ -90,6 +125,9 @@ ${toneInstruction}
 【出力形式】
 ${outputInstruction}
 
+【追加指示】
+${additionalInstructions}
+
 【業務メモ】
 ${memo}`;
   }
@@ -113,6 +151,9 @@ ${toneInstruction}
 
 【出力形式】
 ${outputInstruction}
+
+【追加指示】
+${additionalInstructions}
 
 【業務メモ】
 ${memo}`;
@@ -138,6 +179,9 @@ ${toneInstruction}
 
 【出力形式】
 ${outputInstruction}
+
+【追加指示】
+${additionalInstructions}
 
 【業務メモ】
 ${memo}`;
@@ -165,4 +209,8 @@ clearButton.addEventListener("click", function () {
   formatType.value = "share";
   toneType.value = "polite";
   outputType.value = "natural";
+  noGuess.checked = true;
+  separateFacts.checked = true;
+  askMissing.checked = true;
+  readyToUse.checked = true;
 });

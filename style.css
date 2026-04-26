@@ -89,3 +89,31 @@ select {
 .secondary-button:hover {
   background-color: #4b5563;
 }
+
+.option-area {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.option-area h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #1f2937;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-weight: normal;
+  color: #374151;
+}
+
+.checkbox-label input {
+  margin-top: 3px;
+}
