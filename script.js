@@ -3,6 +3,7 @@ const outputMemo = document.getElementById("outputMemo");
 const formatButton = document.getElementById("formatButton");
 const formatType = document.getElementById("formatType");
 const toneType = document.getElementById("toneType");
+const outputType = document.getElementById("outputType");
 const copyButton = document.getElementById("copyButton");
 const clearButton = document.getElementById("clearButton");
 
@@ -30,11 +31,38 @@ function getToneInstruction(tone) {
   return "丁寧で分かりやすい文章にしてください。";
 }
 
+function getOutputInstruction(output) {
+  if (output === "natural") {
+    return "自然な文章として、そのまま使える形で出力してください。";
+  }
+
+  if (output === "bullet") {
+    return "箇条書きで、要点が分かりやすい形に整理してください。";
+  }
+
+  if (output === "email") {
+    return "件名と本文を含めたメール形式で出力してください。";
+  }
+
+  if (output === "chat") {
+    return "チャットでそのまま送れる、短めで読みやすい文章にしてください。";
+  }
+
+  if (output === "report") {
+    return "報告書のように、見出しを使って整理された形式で出力してください。";
+  }
+
+  return "自然な文章として出力してください。";
+}
+
 formatButton.addEventListener("click", function () {
   const memo = inputMemo.value.trim();
   const selectedType = formatType.value;
   const selectedTone = toneType.value;
+  const selectedOutput = outputType.value;
+
   const toneInstruction = getToneInstruction(selectedTone);
+  const outputInstruction = getOutputInstruction(selectedOutput);
 
   if (memo === "") {
     outputMemo.value = "業務メモを入力してください。";
@@ -60,11 +88,7 @@ ${toneInstruction}
 ・今後の対応方針
 
 【出力形式】
-以下の見出しで整理してください。
-
-【共有事項】
-【確認事項】
-【対応方針】
+${outputInstruction}
 
 【業務メモ】
 ${memo}`;
@@ -88,12 +112,7 @@ ${toneInstruction}
 ・上長に確認したいこと
 
 【出力形式】
-チャットやメールでそのまま送れる文章にしてください。
-必要に応じて、以下の見出しを使ってください。
-
-【事象】
-【確認済みの内容】
-【相談事項】
+${outputInstruction}
 
 【業務メモ】
 ${memo}`;
@@ -118,8 +137,7 @@ ${toneInstruction}
 ・相手を責める表現を避けること
 
 【出力形式】
-チャットでそのまま送れる自然な文章にしてください。
-長すぎず、読みやすくしてください。
+${outputInstruction}
 
 【業務メモ】
 ${memo}`;
@@ -146,4 +164,5 @@ clearButton.addEventListener("click", function () {
   outputMemo.value = "";
   formatType.value = "share";
   toneType.value = "polite";
+  outputType.value = "natural";
 });
