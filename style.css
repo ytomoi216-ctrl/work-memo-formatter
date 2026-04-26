@@ -273,3 +273,88 @@ select:focus {
   align-items: center;
   gap: 8px;
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(96, 165, 250, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent 72%);
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.settings-grid .control-area {
+  padding: 16px;
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.82), rgba(30, 41, 59, 0.42));
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  border-radius: 18px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 36px rgba(0, 0, 0, 0.22),
+    0 0 24px rgba(59, 130, 246, 0.06);
+}
+
+.settings-grid .control-area:hover {
+  border-color: rgba(34, 211, 238, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 18px 40px rgba(0, 0, 0, 0.26),
+    0 0 28px rgba(34, 211, 238, 0.11);
+}
+
+.settings-grid label {
+  color: #93c5fd;
+}
+
+.settings-grid select {
+  margin-top: 4px;
+}
+
+textarea {
+  background:
+    linear-gradient(180deg, rgba(2, 6, 23, 0.82), rgba(15, 23, 42, 0.72));
+  border: 1px solid rgba(56, 189, 248, 0.38);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 0 22px rgba(15, 23, 42, 0.88),
+    0 18px 40px rgba(0, 0, 0, 0.26),
+    0 0 28px rgba(14, 165, 233, 0.08);
+}
+
+textarea:hover {
+  border-color: rgba(125, 211, 252, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 22px rgba(15, 23, 42, 0.88),
+    0 20px 44px rgba(0, 0, 0, 0.3),
+    0 0 34px rgba(14, 165, 233, 0.12);
+}
+
+#outputMemo {
+  min-height: 230px;
+  border-color: rgba(168, 85, 247, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 0 24px rgba(15, 23, 42, 0.88),
+    0 18px 44px rgba(0, 0, 0, 0.28),
+    0 0 32px rgba(168, 85, 247, 0.12);
+}
+
+#outputMemo:focus {
+  border-color: rgba(216, 180, 254, 0.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 0 24px rgba(15, 23, 42, 0.88),
+    0 20px 48px rgba(0, 0, 0, 0.32),
+    0 0 38px rgba(168, 85, 247, 0.2);
+}
