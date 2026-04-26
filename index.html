@@ -9,9 +9,14 @@
   <div class="container">
     <h1>AI相談用プロンプトメーカー</h1>
 
-    <p>雑な業務メモを、ChatGPTなどに相談しやすいプロンプトに変換するツールです。</p>
+<p>雑な業務メモを、ChatGPTなどに相談しやすいプロンプトに変換するツールです。</p>
 
-    <textarea id="inputMemo" placeholder="ここに業務メモを入力してください"></textarea>
+<div class="section-label">
+  <span class="section-icon">✎</span>
+  <span>業務メモ</span>
+</div>
+
+<textarea id="inputMemo" placeholder="ここに業務メモを入力してください"></textarea>
 
 <div class="settings-grid">
   <div class="control-area">
@@ -52,7 +57,10 @@
 </div>
 
 <div class="option-area">
-  <h3>AIへの追加指示</h3>
+<h3>
+  <span class="section-icon">✦</span>
+  AIへの追加指示
+</h3>
 
   <label class="checkbox-label">
     <input type="checkbox" id="noGuess" checked>
@@ -80,11 +88,15 @@
       <button id="clearButton" type="button" class="secondary-button">クリア</button>
     </div>
 
-    <h2 class="output-title">AIに貼るプロンプト</h2>
+<div class="output-header">
+  <h2 class="output-title">
+    <span class="section-icon">▣</span>
+    AIに貼るプロンプト
+  </h2>
+  <button id="copyButton" type="button" class="copy-button">コピーする</button>
+</div>
 
-    <textarea id="outputMemo" placeholder="ここにAI相談用プロンプトが表示されます" readonly></textarea>
-
-    <button id="copyButton" type="button">コピーする</button>
+<textarea id="outputMemo" placeholder="ここにAI相談用プロンプトが表示されます" readonly></textarea>
   </div>
 
   <script src="script.js"></script>
