@@ -117,3 +117,20 @@ select {
 .checkbox-label input {
   margin-top: 3px;
 }
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.settings-grid .control-area {
+  margin-top: 0;
+}
+
+@media (max-width: 700px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+}
