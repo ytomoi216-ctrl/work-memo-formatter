@@ -12,12 +12,14 @@
 
     <p>雑なメモを、仕事で使いやすい文章に整えるツールです。</p>
 
-    <textarea placeholder="ここに業務メモを入力してください"></textarea>
+    <textarea id="inputMemo" placeholder="ここに業務メモを入力してください"></textarea>
 
-    <button>整形する</button>
+    <button id="formatButton">整形する</button>
 
     <h2 class="output-title">出力結果</h2>
 
-    <textarea placeholder="ここに整形後の文章が表示されます"></textarea>
+    <textarea id="outputMemo" placeholder="ここに整形後の文章が表示されます" readonly></textarea>
   </div>
+
+  <script src="script.js"></script>
 </body>
