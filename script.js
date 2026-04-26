@@ -2,6 +2,7 @@ const inputMemo = document.getElementById("inputMemo");
 const outputMemo = document.getElementById("outputMemo");
 const formatButton = document.getElementById("formatButton");
 const formatType = document.getElementById("formatType");
+const copyButton = document.getElementById("copyButton");
 
 formatButton.addEventListener("click", function () {
   const memo = inputMemo.value.trim();
@@ -51,4 +52,17 @@ ${memo}`;
   }
 
   outputMemo.value = formattedMemo;
+});
+
+copyButton.addEventListener("click", function () {
+  const outputText = outputMemo.value.trim();
+
+  if (outputText === "") {
+    alert("コピーする文章がありません。");
+    return;
+  }
+
+  navigator.clipboard.writeText(outputText);
+
+  alert("コピーしました。");
 });
