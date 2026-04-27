@@ -1,5 +1,6 @@
 const inputMemo = document.getElementById("inputMemo");
 const outputMemo = document.getElementById("outputMemo");
+const aiRequest = document.getElementById("aiRequest");
 const formatButton = document.getElementById("formatButton");
 const formatType = document.getElementById("formatType");
 const toneType = document.getElementById("toneType");
@@ -91,6 +92,7 @@ function getAdditionalInstructions() {
 
 formatButton.addEventListener("click", function () {
   const memo = inputMemo.value.trim();
+  const request = aiRequest.value.trim();
   const selectedType = formatType.value;
   const selectedTone = toneType.value;
   const selectedOutput = outputType.value;
@@ -98,6 +100,9 @@ formatButton.addEventListener("click", function () {
   const toneInstruction = getToneInstruction(selectedTone);
   const outputInstruction = getOutputInstruction(selectedOutput);
   const additionalInstructions = getAdditionalInstructions();
+const requestBlock = request === ""
+  ? "特になし。"
+  : request;
 
   if (memo === "") {
     outputMemo.value = "業務メモを入力してください。";
@@ -127,6 +132,9 @@ ${outputInstruction}
 
 【追加指示】
 ${additionalInstructions}
+
+【今回AIにやってほしいこと】
+${requestBlock}
 
 【業務メモ】
 ${memo}`;
@@ -271,6 +279,7 @@ copyButton.addEventListener("click", function () {
 
 clearButton.addEventListener("click", function () {
   inputMemo.value = "";
+  aiRequest.value = "";
   outputMemo.value = "";
   formatType.value = "share";
   toneType.value = "polite";
