@@ -13,6 +13,21 @@ const readyToUse = document.getElementById("readyToUse");
 
 const copyButton = document.getElementById("copyButton");
 const clearButton = document.getElementById("clearButton");
+const defaultCopyButtonText = copyButton.textContent;
+let copyFeedbackTimer = null;
+
+function showCopyButtonFeedback(message) {
+  copyButton.textContent = message;
+
+  if (copyFeedbackTimer !== null) {
+    clearTimeout(copyFeedbackTimer);
+  }
+
+  copyFeedbackTimer = setTimeout(function () {
+    copyButton.textContent = defaultCopyButtonText;
+    copyFeedbackTimer = null;
+  }, 1800);
+}
 
 function getToneInstruction(tone) {
   if (tone === "polite") {
@@ -268,13 +283,17 @@ copyButton.addEventListener("click", function () {
   const outputText = outputMemo.value.trim();
 
   if (outputText === "") {
-    alert("コピーする文章がありません。");
+    showCopyButtonFeedback("文章がありません");
     return;
   }
 
-  navigator.clipboard.writeText(outputText);
-
-  alert("コピーしました。");
+  navigator.clipboard.writeText(outputText)
+    .then(function () {
+      showCopyButtonFeedback("コピーしました");
+    })
+    .catch(function () {
+      showCopyButtonFeedback("コピーできませんでした");
+    });
 });
 
 clearButton.addEventListener("click", function () {
